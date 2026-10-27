@@ -242,3 +242,7 @@ MIT — see [LICENSE](LICENSE)
 [![Star History Chart](https://star-history.dera.page/svg?repos=andrea9293/mcp-documentation-server&type=Date)](https://star-history.dera.page/#andrea9293/mcp-documentation-server&Date)
 
 **Built with [FastMCP](https://github.com/punkpeye/fastmcp), [Orama](https://orama.com/), and TypeScript**
+
+## Fork contribution notes
+
+This repository is a fork of [andrea9293/mcp-documentation-server](https://github.com/andrea9293/mcp-documentation-server). The `troy/gemini-search-enhancements` branch starts from upstream commit `9a75899000ad0e77ba30ef28f471c7ae8d71fafb` and fixes Gemini document-search readiness by waiting for newly uploaded files to reach `ACTIVE` before analysis. The existing Gemini mapping behavior for already-active files remains unchanged; the branch also declares the TypeScript source root explicitly so the project builds cleanly with current TypeScript. The upstream project remains the original source.

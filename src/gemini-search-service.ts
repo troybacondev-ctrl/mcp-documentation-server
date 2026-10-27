@@ -73,6 +73,7 @@ async function performGeminiSearch(
     console.error(`[GeminiSearch] Processing file: ${originalFile}`);
 
     let myfile;
+    let uploadedNewFile = false;
     const mimeType = getMimeType(originalFile);
 
     // Check if we already have a mapping for this document
@@ -120,6 +121,7 @@ async function performGeminiSearch(
             file: filePath,
             config: { mimeType: mimeType },
         });
+        uploadedNewFile = true;
 
         console.error(`[GeminiSearch] File uploaded to Gemini: ${myfile.uri}`);
         console.error(`[GeminiSearch] File ID: ${myfile.name}`);
@@ -134,7 +136,7 @@ async function performGeminiSearch(
     }
 
     // Wait for file to be processed (only for newly uploaded files)
-    if (!GeminiFileMappingService.hasMapping(documentId)) {
+    if (uploadedNewFile) {
         let attempts = 0;
         const maxAttempts = 30; // 30 seconds max wait
         while (attempts < maxAttempts) {
